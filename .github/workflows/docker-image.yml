@@ -20,4 +20,4 @@ jobs:
         username: ${{ vars.REGISTRY_USER }}
         password: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ vars.REGISTRY_REPOSITORY }}/${{ vars.PROJECT }} :$GITHUB_SHA
+      run: docker buildx build --push --tag edaakiya/edaakiya-backend:0.0.4 --platform=linux/arm64,linux/amd64 .
